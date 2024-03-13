@@ -314,6 +314,19 @@ Idents(experiment) <- experiment@meta.data$condition #or age or seurat cluster
 VlnPlot(object = experiment, 
         features = c("feature of interest"), pt.size = 0, cols = my_cols, ncol = 1) & NoLegend() # cols argument can be costumize
 
+## DOTPLOTS in Fig2D
+c7_0_9_1 <- subset(experiment, idents = c(0, 7, 9, 1), #subset for clusters to be analyzed (Cluster 7 is NMJ, 9 is MTJ, 0 is default muscle, 1 is central tendon)
+                 invert = F)
+my_levels <- c(7,0,9,1)
+c7_0_9_1@active.ident <- factor(x = c7_0_9_1@active.ident, levels = my_levels)
+
+DefaultAssay(c7_0_9_1) <- "Spatial"
+c7_0_9_1 <- NormalizeData(c7_0_9_1, verbose = TRUE)
+c7_0_9_1 <- ScaleData(c7_0_9_1, verbose = TRUE)
+
+DotPlot(object = c7_0_9_1, features =  "list of genes") + coord_flip()
+
+
 
 
 ## clusterProfiler GENE ONTOLOGY
