@@ -208,6 +208,13 @@ for(i in 1:10){
 }
 clustree(experiment)
 
+#pick you resolution
+## 0.6 was picked for E14.5 controls integrated
+## 0.3 was picked for E18.5 controls integrated
+### 0.4 was picked for E14.5 control and dysgenic integrated
+### 0.3 was picked for E18.5 control and dysgenic integrated
+## 0.4 was picked for E14.5 and E18.5 control and dysgenic integrated
+## 0.4 was picked for E18.5 control and bCat intgrated
 
 # if 0.4 resolution selected
 experiment <- FindClusters(experiment, 
